@@ -5,18 +5,30 @@
  */
 package com.malintha_agency.model;
 
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 /**
  *
  * @author Dell
  */
-public class Shop {
+@Entity
+public class Shop implements Serializable {
+
     private int id;
     private String shopname;
     private String ownername;
     private String address;
     private int phonenum1;
     private int phonenum2;
-    private Route route;
+    private Set<Route> routes = new HashSet<>();
 
     public Shop(String shopname, String ownername, String address, int phonenum1, int phonenum2) {
         this.shopname = shopname;
@@ -26,6 +38,8 @@ public class Shop {
         this.phonenum2 = phonenum2;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getId() {
         return id;
     }
@@ -73,16 +87,13 @@ public class Shop {
     public void setPhonenum2(int phonenum2) {
         this.phonenum2 = phonenum2;
     }
-
-    public Route getRoute() {
-        return route;
+    @OneToMany(cascade = CascadeType.ALL)
+    public Set<Route> getRoutes() {
+        return routes;
     }
 
-    public void setRoute(Route route) {
-        this.route = route;
+    public void setRoutes(Set<Route> routes) {
+        this.routes = routes;
     }
-    
-    
-    
-    
+
 }

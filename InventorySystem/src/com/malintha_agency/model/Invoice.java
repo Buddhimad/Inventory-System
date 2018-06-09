@@ -5,40 +5,46 @@
  */
 package com.malintha_agency.model;
 
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 /**
  *
  * @author Dell
  */
-public class Invoice {
-    private int id;
+@Entity
+public class Invoice implements Serializable {
+
+    private int invoiceid;
     private String invoiceno;
     private String invoicedate;
     private String vehicleno;
     private double payment;
-    private double creditpayment;        
-    private int chequeno;
-    private String chequedate;
-    private String bankingdate;
-    private double chequepayment;
+    private double creditpayment;
 
-    public Invoice(String invoiceno, String invoicedate, String vehicleno, double payment, double creditpayment, int chequeno, String chequedate, String bankingdate, double chequepayment) {
+    public Invoice(String invoiceno, String invoicedate, String vehicleno, double payment, double creditpayment) {
         this.invoiceno = invoiceno;
         this.invoicedate = invoicedate;
         this.vehicleno = vehicleno;
         this.payment = payment;
         this.creditpayment = creditpayment;
-        this.chequeno = chequeno;
-        this.chequedate = chequedate;
-        this.bankingdate = bankingdate;
-        this.chequepayment = chequepayment;
     }
 
-    public int getId() {
-        return id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int getInvoiceid() {
+        return invoiceid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setInvoiceid(int invoiceid) {
+        this.invoiceid = invoiceid;
     }
 
     public String getInvoiceno() {
@@ -81,37 +87,4 @@ public class Invoice {
         this.creditpayment = creditpayment;
     }
 
-    public int getChequeno() {
-        return chequeno;
-    }
-
-    public void setChequeno(int chequeno) {
-        this.chequeno = chequeno;
-    }
-
-    public String getChequedate() {
-        return chequedate;
-    }
-
-    public void setChequedate(String chequedate) {
-        this.chequedate = chequedate;
-    }
-
-    public String getBankingdate() {
-        return bankingdate;
-    }
-
-    public void setBankingdate(String bankingdate) {
-        this.bankingdate = bankingdate;
-    }
-
-    public double getChequepayment() {
-        return chequepayment;
-    }
-
-    public void setChequepayment(double chequepayment) {
-        this.chequepayment = chequepayment;
-    }
-    
-    
 }

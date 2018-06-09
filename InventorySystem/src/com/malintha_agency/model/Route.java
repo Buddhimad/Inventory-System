@@ -5,37 +5,36 @@
  */
 package com.malintha_agency.model;
 
-import java.util.List;
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author Dell
  */
-public class Route {
-    private int id;
+@Entity
+public class Route implements Serializable {
+
+    private int rid;
     private int routeno;
     private String routename;
-    private List<Shop> shops;
-
-    public List<Shop> getShops() {
-        return shops;
-    }
-
-    public void setShops(List<Shop> shops) {
-        this.shops = shops;
-    }
 
     public Route(int routeno, String routename) {
         this.routeno = routeno;
         this.routename = routename;
     }
 
-    public int getId() {
-        return id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int getRId() {
+        return rid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setRId(int rid) {
+        this.rid = rid;
     }
 
     public int getRouteno() {
@@ -53,6 +52,5 @@ public class Route {
     public void setRoutename(String routename) {
         this.routename = routename;
     }
-    
-    
+
 }

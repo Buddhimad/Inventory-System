@@ -5,14 +5,20 @@
  */
 package com.malintha_agency.model;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  *
  * @author Dell
  */
+@Entity
+public class User implements Serializable {
 
-public class User {
-    
-    private int id;
+    private int uid;
     private String username;
     private String nic;
     private boolean role;
@@ -25,12 +31,14 @@ public class User {
         this.password = password;
     }
 
-    public int getId() {
-        return id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int getUId() {
+        return uid;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.uid = id;
     }
 
     public String getUsername() {
@@ -64,7 +72,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-   
-    
-    
+
 }

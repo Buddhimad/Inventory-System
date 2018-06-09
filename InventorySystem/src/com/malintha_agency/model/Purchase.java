@@ -5,10 +5,12 @@
  */
 package com.malintha_agency.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Dell
  */
-public class Purchase {
+public class Purchase implements Serializable{
     
 }
